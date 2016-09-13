@@ -1,0 +1,22 @@
+<h1>Profile change</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+
+      <span><%= f.label :country %> (現在設定されている国: <%= @user.country %>)</span>
+      <%= f.text_field :country %>
+
+     <span> <%= f.label :region %> (現在設定されている地域: <%= @user.region %>)</span>
+      <%= f.text_field :region %>
+
+      <span><%= f.label :email %> (現在設定されているメールアドレス: <%= @user.email %>)</span>
+      <%= f.text_field :email %>
+      
+      <span><%= f.label :profile %> (300字以内)</span>
+      <%= f.text_area :profile %>
+
+      <%= f.submit "profile changed!", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
