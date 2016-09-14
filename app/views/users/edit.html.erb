@@ -3,6 +3,12 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
+      
+      <span><%= f.label :name %> (現在設定されている氏名: <%= @user.name %>)</span>
+      <%= f.text_field :name %>
+      
+      <span><%= f.label :password %> (パスワードはプライバシーの観点から非表示です。)</span>
+      <%= f.text_field :password %>
 
       <span><%= f.label :country %> (現在設定されている国: <%= @user.country %>)</span>
       <%= f.text_field :country %>
