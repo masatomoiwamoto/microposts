@@ -21,10 +21,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    check_user(@user)
   end
   
   def update
     @user = User.find(params[:id])
+    check_user(@user)
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -38,5 +40,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation, :country, :region, :profile)
+  end
+  
+  def check_user(user)
+    if (current_user != user)
+      redirect_to :root
+    end
   end
 end
