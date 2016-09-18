@@ -3,8 +3,15 @@ Rails.application.routes.draw do
   
   get    'signup', to: 'users#new'
   get    'login' , to: 'sessions#new'
+  get    'contact', to: 'static_pages#contact'
   post   'login' , to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   resources :users, only: [:edit, :update, :show ,:create ]
   resources :microposts
