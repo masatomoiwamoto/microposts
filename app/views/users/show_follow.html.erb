@@ -1,6 +1,6 @@
 <% provide(:title, @title) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-3">
     <section class="user_info">
       <%= gravatar_for @user %>
       <h1><%= @user.name %></h1>
@@ -23,8 +23,10 @@
       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>
+          <div class="row" style="margin:0;">
             <%= link_to gravatar_for(user, size: 30), user %>
             <%= user.name %>
+            </div>
             <% end %>
         </div>
       <% end %>
